@@ -7,4 +7,8 @@ dotenv.config({ path: envFile });
 export const ENV = {
     NODE_ENV: env,
     PORT: process.env.PORT || 3000,
+    MAILER_SERVICE: process.env.MAILER_SERVICE || "gmail",
+    MAILER_USER: process.env.MAILER_USER || "dev",
+    MAILER_EMAIL: process.env.MAILER_EMAIL || "user@example.com",
+    MAILER_PASSWORD: process.env.MAILER_PASSWORD || "password"
 };
