@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { MAILER_CONFIG } from "../config/mailer";
+import { ContactSchema } from "../schemas/contactSchema";
 
 const nodemailer = require("nodemailer");
 
@@ -11,21 +12,18 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-export async function sendMail(req: Request, res: Response) {
+export async function sendContactResponseEmail(req: Request<{}, {}, ContactSchema>, res: Response) {
 
     try {
-        // TODO: Add validation here for email addresses, subject and text content
-        let { to, subject, text, html, replyTo } = req.body;
-        if (!html || html.length === 0) {
-            html = text;
-        }
+        const { name, email, message } = req.body;
+        const subject: string = `New contact form submission from ${name} - ${email}`
+
         const info = await transporter.sendMail({
             from: `"${MAILER_CONFIG.MAILER_USER}" <${MAILER_CONFIG.MAILER_EMAIL}>`,
-            to,
+            to: MAILER_CONFIG.MAILER_EMAIL,
             subject,
-            text,
-            html,
-            replyTo
+            text: message,
+            replyTo: email
         });
 
         res.status(200).json(

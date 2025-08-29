@@ -1,8 +1,10 @@
 import { Router } from "express";
-import { sendMail } from "../controllers/mailerController";
+import { sendContactResponseEmail } from "../controllers/mailerController";
+import { validateRequestBodyWithZod } from "../middleware/validate";
+import { contactSchema } from "../schemas/contactSchema";
 
 const mailerRouter: Router = Router();
 
-mailerRouter.post("/send", sendMail);
+mailerRouter.post("/sendContactResponseEmail", validateRequestBodyWithZod(contactSchema), sendContactResponseEmail);
 
 export default mailerRouter;
