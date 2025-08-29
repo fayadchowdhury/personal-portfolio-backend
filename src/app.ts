@@ -5,6 +5,9 @@ import routes from './routes';
 const app: Application = express();
 const port: number = APP_CONFIG.port;
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use(routes);
 
 app.listen(port, () => {
