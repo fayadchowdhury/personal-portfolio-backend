@@ -1,0 +1,48 @@
+name: CI/CD to EC2
+
+on:
+  push:
+    branches:
+      - master  # Trigger on pushes to main branch
+
+jobs:
+  build-and-deploy:
+    name: CI/CD to EC2
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      # 2. Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Build TypeScript
+      - name: Build backend
+        run: npm run build
+
+      # 5. Deploy to EC2 via SSH
+      - name: Deploy to EC2
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+          HOST: ${{ secrets.EC2_INSTANCE_DNS }}
+          USERNAME: ${{ secrets.EC2_USER }}
+          APP_PATH: ${{ secrets.EC2_TARGET_DIRECTORY }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > key.pem
+          chmod 600 key.pem
+          ssh -o StrictHostKeyChecking=no -i key.pem $USERNAME@$HOST << EOF
+            cd $APP_PATH
+            git pull origin master
+            npm install
+            npm run build
+            pm2 restart portfolio-backend
+          EOF
