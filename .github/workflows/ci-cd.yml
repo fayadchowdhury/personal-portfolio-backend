@@ -41,7 +41,7 @@ jobs:
           chmod 600 key.pem
           ssh -o StrictHostKeyChecking=no -i key.pem $USERNAME@$HOST << EOF
             cd $APP_PATH
-            git pull origin master
+            git pull origin master --rebase
             npm install
             npm run build
             pm2 restart portfolio-backend
