@@ -1,10 +1,12 @@
 import express, { Application, Request, Response } from 'express';
 import { APP_CONFIG } from './config';
 import routes from './routes';
+import cors from 'cors';
 
 const app: Application = express();
 const port: number = APP_CONFIG.port;
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
