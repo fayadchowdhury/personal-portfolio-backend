@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { MAILER_CONFIG } from "../config/mailer";
-import { ContactSchema } from "../schemas/contactSchema";
+import { ContactSchema } from "../schemas";
 
 const nodemailer = require("nodemailer");
 

@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { sendContactResponseEmail } from "../controllers/mailerController";
-import { validateRequestBodyWithZod } from "../middleware/validate";
-import { contactSchema } from "../schemas/contactSchema";
+import { sendContactResponseEmail } from "../controllers";
+import { validateRequestBodyWithZod } from "../middleware";
+import { contactSchema } from "../schemas";
 
 const mailerRouter: Router = Router();
 
