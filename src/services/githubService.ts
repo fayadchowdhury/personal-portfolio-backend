@@ -23,6 +23,7 @@ export async function pullGithubPublicRepositories() : Promise<ProjectBase[]> {
             res.data.forEach(async (repo) => {
                 repoLists.push(
                     {
+                        "id": repo.id,
                         "owner": repo.owner.login,
                         "repo": repo.name,
                         "description": repo.description
