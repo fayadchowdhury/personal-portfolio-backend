@@ -20,7 +20,7 @@ export async function pullGithubPublicRepositories() : Promise<ProjectBase[]> {
             }
         );
         if ( res.status == 200 ){
-            res.data.forEach(async (repo) => {
+            res.data.forEach(async (repo: any) => {
                 repoLists.push(
                     {
                         "id": repo.id,
