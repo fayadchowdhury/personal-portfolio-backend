@@ -1,2 +1,2 @@
 export * from "./contactSchema";
-export * from "./projectRequestSchemas";
+export * from "./projectSchemas";

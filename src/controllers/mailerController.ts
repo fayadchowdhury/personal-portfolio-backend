@@ -16,7 +16,7 @@ export async function sendContactResponseEmail(req: Request<{}, {}, ContactSchem
 
     try {
         const { name, email, message } = req.body;
-        const subject: string = `New contact form submission from ${name} - ${email}`
+        const subject: string = `New contact form submission from ${name} - ${email}`;
 
         const info = await transporter.sendMail({
             from: `"${MAILER_CONFIG.MAILER_USER}" <${MAILER_CONFIG.MAILER_EMAIL}>`,
@@ -30,7 +30,7 @@ export async function sendContactResponseEmail(req: Request<{}, {}, ContactSchem
             {
                 "message": "Email sent successfully"
             }
-        )
+        );
     }
     catch (err) {
         console.log(`Error occurred when sending email: ${err}`);
@@ -38,6 +38,6 @@ export async function sendContactResponseEmail(req: Request<{}, {}, ContactSchem
             {
                 "message": `Failed to send email. ${err}`
             }
-        )
+        );
     }
 };

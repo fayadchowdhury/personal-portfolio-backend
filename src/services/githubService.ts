@@ -6,7 +6,7 @@ const octokit = new Octokit(
     {
         auth: GITHUB_SERVICE_CONFIG.GITHUB_ACCESS_TOKEN
     }
-)
+);
 
 export async function pullGithubPublicRepositories() : Promise<ProjectBase[]> {
     const username: string = GITHUB_SERVICE_CONFIG.GITHUB_USERNAME;
@@ -28,7 +28,7 @@ export async function pullGithubPublicRepositories() : Promise<ProjectBase[]> {
                         "repo": repo.name,
                         "description": repo.description
                     }
-                )
+                );
             });
         }
         return repoLists;

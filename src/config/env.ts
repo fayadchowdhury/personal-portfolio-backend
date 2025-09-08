@@ -6,16 +6,16 @@ dotenv.config({ path: envFile });
 
 export const ENV = {
     NODE_ENV: env,
-    PORT: process.env.PORT || 3000,
-    MAILER_SERVICE: process.env.MAILER_SERVICE || "gmail",
-    MAILER_USER: process.env.MAILER_USER || "dev",
-    MAILER_EMAIL: process.env.MAILER_EMAIL || "user@example.com",
-    MAILER_PASSWORD: process.env.MAILER_PASSWORD || "password",
-    GITHUB_ACCESS_TOKEN: process.env.GITHUB_ACCESS_TOKEN || "token",
-    GITHUB_USERNAME: process.env.GITHUB_USERNAME || "username",
-    DB_HOST: process.env.DB_HOST || "host.xyz",
-    DB_PORT: process.env.DB_PORT || 1234,
-    DB_DATABASE: process.env.DB_DATABASE || "database",
-    DB_USER: process.env.DB_USER || "user",
-    DB_PASSWORD: process.env.DB_PASSWORD || "password"
+    PORT: Number(process.env.PORT || 3000),
+    MAILER_SERVICE: String(process.env.MAILER_SERVICE || "gmail"),
+    MAILER_USER: String(process.env.MAILER_USER || "dev"),
+    MAILER_EMAIL: String(process.env.MAILER_EMAIL || "user@example.com"),
+    MAILER_PASSWORD: String(process.env.MAILER_PASSWORD || "password"),
+    GITHUB_ACCESS_TOKEN: String(process.env.GITHUB_ACCESS_TOKEN || "token"),
+    GITHUB_USERNAME: String(process.env.GITHUB_USERNAME || "username"),
+    DB_HOST: String(process.env.DB_HOST || "host.xyz"),
+    DB_PORT: Number(process.env.DB_PORT || 1234),
+    DB_DATABASE: String(process.env.DB_DATABASE || "database"),
+    DB_USER: String(process.env.DB_USER || "user"),
+    DB_PASSWORD: String(process.env.DB_PASSWORD || "password")
 };

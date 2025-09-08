@@ -2,20 +2,20 @@ import { DataTypes, Model, Optional } from "sequelize";
 import { sequelize } from "../config";
 
 export interface ProjectBase {
-    id: number;
-    owner: string;
-    repo: string;
-    description: string;
+    id: number,
+    owner: string,
+    repo: string,
+    description: string,
 }
 
 export interface ProjectMetadata {
-    id?: number;
-    owner: string;
-    repo: string;
-    description: string;
-    languages: string[];
-    topics: string[];
-    readme: string;
+    id?: number,
+    owner: string,
+    repo: string,
+    description: string,
+    languages: string[],
+    topics: string[],
+    readme: string,
 }
 
 export class Project extends Model<ProjectMetadata> implements ProjectMetadata {

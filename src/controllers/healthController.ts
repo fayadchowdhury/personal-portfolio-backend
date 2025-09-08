@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-const os = require("os");
+import os from "os";
 
 export function healthCheck(req: Request, res: Response) {
     res.json(

@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { Project } from "../models";
 import { Op } from "sequelize";
-import { ProjectTopicRequestSchema, projectTopicRrequestSchema } from "../schemas";
+import { ProjectTopicRequestSchema, projectTopicRequestSchema } from "../schemas";
 
 export async function getAllProjects(req: Request, res: Response) {
     try {
@@ -12,7 +12,7 @@ export async function getAllProjects(req: Request, res: Response) {
                 {
                     "projects": projects
                 }
-            )
+            );
         }
     }
     catch (err: unknown) {
@@ -21,7 +21,7 @@ export async function getAllProjects(req: Request, res: Response) {
             {
                 "message": `Failed to retrieve projects. ${err}`
             }
-        )
+        );
     }
 };
 
@@ -44,7 +44,7 @@ export async function getProjectsByTopics(req: Request<{}, {}, ProjectTopicReque
                 {
                     "projects": projects
                 }
-            )
+            );
         }
     }
     catch (err: unknown) {
@@ -53,6 +53,6 @@ export async function getProjectsByTopics(req: Request<{}, {}, ProjectTopicReque
             {
                 "message": `Failed to retrieve projects by topic. ${err}`
             }
-        )
+        );
     }
 };
