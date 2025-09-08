@@ -12,5 +12,10 @@ export const ENV = {
     MAILER_EMAIL: process.env.MAILER_EMAIL || "user@example.com",
     MAILER_PASSWORD: process.env.MAILER_PASSWORD || "password",
     GITHUB_ACCESS_TOKEN: process.env.GITHUB_ACCESS_TOKEN || "token",
-    GITHUB_USERNAME: process.env.GITHUB_USERNAME || "username"
+    GITHUB_USERNAME: process.env.GITHUB_USERNAME || "username",
+    DB_HOST: process.env.DB_HOST || "host.xyz",
+    DB_PORT: process.env.DB_PORT || 1234,
+    DB_DATABASE: process.env.DB_DATABASE || "database",
+    DB_USER: process.env.DB_USER || "user",
+    DB_PASSWORD: process.env.DB_PASSWORD || "password"
 };
