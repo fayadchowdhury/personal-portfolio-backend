@@ -16,6 +16,7 @@ export interface ProjectMetadata {
     languages: string[],
     topics: string[],
     readme: string,
+    imageUrl: string,
 }
 
 export class Project extends Model<ProjectMetadata> implements ProjectMetadata {
@@ -26,6 +27,7 @@ export class Project extends Model<ProjectMetadata> implements ProjectMetadata {
     public languages!: string[];
     public topics!: string[];
     public readme!: string;
+    public imageUrl!: string;
 
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
@@ -60,6 +62,10 @@ Project.init(
             defaultValue: []
         },
         readme: {
+            type: DataTypes.TEXT,
+            allowNull: true
+        },
+        imageUrl: {
             type: DataTypes.TEXT,
             allowNull: true
         }

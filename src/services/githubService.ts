@@ -47,6 +47,7 @@ export async function pullGithubPublicRepositoriesMetadata() : Promise<ProjectMe
             let topicsList: string[] = [];
             let languagesList: string[] = [];
             let readmeString: string = "";
+            let imageUrlString: string = "";
             const topics = await octokit.request('GET /repos/{owner}/{repo}/topics', {
                 owner: repo.owner,
                 repo: repo.repo,
@@ -59,6 +60,11 @@ export async function pullGithubPublicRepositoriesMetadata() : Promise<ProjectMe
                 owner: repo.owner,
                 repo: repo.repo,
                 path: 'README.md',
+            }).catch(()=> null);
+            const imageUrl = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
+                owner: repo.owner,
+                repo: repo.repo,
+                path: 'assets/featured-image.png',
             }).catch(()=> null);
             if (topics.status == 200) {
                 if ( !topics.data.names || topics.data.names.length == 0 ) {
@@ -78,11 +84,18 @@ export async function pullGithubPublicRepositoriesMetadata() : Promise<ProjectMe
                 }
                 readmeString = Buffer.from(readme.data.content, "base64").toString();
             }
+            if (imageUrl && imageUrl.status == 200) {
+                if ( !imageUrl.data ) {
+                    imageUrlString = ""
+                }
+                imageUrlString = imageUrl.data.download_url;
+            }
             const repoMetadata = {
                 ...repo,
                 languages: languagesList,
                 topics: topicsList,
                 readme: readmeString,
+                imageUrl: imageUrlString,
             }
             repoMetadataList.push(repoMetadata);
         }
