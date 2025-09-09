@@ -26,7 +26,9 @@ export async function pullGithubPublicRepositories() : Promise<ProjectBase[]> {
                         "id": repo.id,
                         "owner": repo.owner.login,
                         "repo": repo.name,
-                        "description": repo.description
+                        "description": repo.description,
+                        "projectCreatedAt": new Date(repo.created_at),
+                        "projectUpdatedAt": new Date(repo.updated_at),
                     }
                 );
             });

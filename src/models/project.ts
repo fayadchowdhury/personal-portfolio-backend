@@ -6,6 +6,8 @@ export interface ProjectBase {
     owner: string,
     repo: string,
     description: string,
+    projectCreatedAt: Date,
+    projectUpdatedAt: Date,
 }
 
 export interface ProjectMetadata {
@@ -17,6 +19,8 @@ export interface ProjectMetadata {
     topics: string[],
     readme: string,
     imageUrl: string,
+    projectCreatedAt: Date,
+    projectUpdatedAt: Date,
 }
 
 export class Project extends Model<ProjectMetadata> implements ProjectMetadata {
@@ -28,6 +32,8 @@ export class Project extends Model<ProjectMetadata> implements ProjectMetadata {
     public topics!: string[];
     public readme!: string;
     public imageUrl!: string;
+    public projectCreatedAt!: Date;
+    public projectUpdatedAt!: Date;
 
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
@@ -67,6 +73,14 @@ Project.init(
         },
         imageUrl: {
             type: DataTypes.TEXT,
+            allowNull: true
+        },
+        projectCreatedAt: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        projectUpdatedAt: {
+            type: DataTypes.DATE,
             allowNull: true
         }
     },

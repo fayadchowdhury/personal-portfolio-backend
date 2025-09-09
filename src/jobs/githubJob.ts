@@ -11,7 +11,7 @@ export function createGithubSyncJob() : ScheduledTask {
             console.log("GitHub sync completed.");
             console.log("Pushing to database");
             const projects = await Project.bulkCreate(repos, {
-                updateOnDuplicate: ["owner", "repo", "description", "languages", "topics", "readme", "imageUrl"],
+                updateOnDuplicate: ["owner", "repo", "description", "languages", "topics", "readme", "imageUrl", "projectCreatedAt", "projectUpdatedAt"],
                 returning: true
             });
             if (projects) {
