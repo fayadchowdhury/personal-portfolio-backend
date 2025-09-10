@@ -4,7 +4,7 @@ import { Project } from "../models";
 
 
 export function createGithubSyncJob() : ScheduledTask {
-    return cron.schedule("0 */6 * * *", async () => {
+    return cron.schedule("0 */2 * * *", async () => {
         console.log("Running GitHub sync job...");
         try {
             const repos = await pullGithubPublicRepositoriesMetadata();
