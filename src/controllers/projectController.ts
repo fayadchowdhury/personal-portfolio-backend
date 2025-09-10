@@ -5,7 +5,15 @@ import { ProjectTopicRequestSchema, projectTopicRequestSchema } from "../schemas
 
 export async function getAllProjects(req: Request, res: Response) {
     try {
-        const projects = await Project.findAll();
+        const projects = await Project.findAll(
+            {
+                where: {
+                    topics: {
+                        [Op.overlap]: ["show"]
+                    }
+                }
+            }
+        );
         if (projects)
         {
             res.status(200).json(
