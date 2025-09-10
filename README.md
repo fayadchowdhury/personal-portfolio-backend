@@ -8,4 +8,8 @@ Github Actions takes care of my CI/CD process including deployment to AWS EC2.
 
 It is built to be modular and while it is monolithic now, I plan on splitting it out into isolated components that I will orchestrate as microservices.
 
-WIP!
+### TL;DR
+- Node, Express, TypeScript, Sequelize ORM
+- Nodemailer mailing service, Octokit Github project sync service
+- CI/CD via Github Actions to deploy to AWS EC2
+- WIP!
