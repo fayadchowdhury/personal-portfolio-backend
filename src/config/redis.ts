@@ -16,3 +16,5 @@ export const redisClient = createClient({
         port: REDIS_CONFIG.REDIS_PORT
     }
 });
+
+redisClient.on("err", (error) => console.log(`Error connecting to Redis: ${error}`));

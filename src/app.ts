@@ -6,6 +6,7 @@ import cors from 'cors';
 import { createGithubSyncJob } from "./jobs";
 
 import { sequelize } from './config';
+import { redisClient } from './config';
 
 const app: Application = express();
 const port: number = APP_CONFIG.port;
@@ -23,6 +24,8 @@ app.listen(port, async () => {
         console.log(`Connected to database!`);
         await sequelize.sync();
         console.log(`Synced tables`);
+        await redisClient.connect();
+        console.log(`Connected to Redis!`);
         const githubSyncJob = createGithubSyncJob();
         githubSyncJob.start();
     }
