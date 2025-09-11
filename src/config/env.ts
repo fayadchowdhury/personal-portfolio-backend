@@ -17,5 +17,9 @@ export const ENV = {
     DB_PORT: Number(process.env.DB_PORT || 1234),
     DB_DATABASE: String(process.env.DB_DATABASE || "database"),
     DB_USER: String(process.env.DB_USER || "user"),
-    DB_PASSWORD: String(process.env.DB_PASSWORD || "password")
+    DB_PASSWORD: String(process.env.DB_PASSWORD || "password"),
+    REDIS_HOST: String(process.env.REDIS_HOST || "host.xyz"),
+    REDIS_PORT: Number(process.env.REDIS_PORT || 1234),
+    REDIS_USERNAME: String(process.env.REDIS_USERNAME || "user"),
+    REDIS_PASSWORD: String(process.env.REDIS_PASSWORD || "password"),
 };
