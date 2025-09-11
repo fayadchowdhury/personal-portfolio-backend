@@ -6,7 +6,8 @@ export interface SkillData {
     id?: UUID,
     name: string,
     iconPath: string,
-    type: string
+    type: string,
+    subType: string,
 }
 
 export class Skill extends Model<SkillData> implements SkillData {
@@ -14,6 +15,7 @@ export class Skill extends Model<SkillData> implements SkillData {
     public name!: string;
     public iconPath!: string;
     public type!: string;
+    public subType!: string;
 
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
@@ -35,6 +37,10 @@ Skill.init(
             allowNull: true,
         },
         type: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        subType: {
             type: DataTypes.STRING,
             allowNull: true,
         }
