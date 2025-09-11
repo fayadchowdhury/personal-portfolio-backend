@@ -8,8 +8,10 @@ export async function getContactFormData(req: Request, res: Response) {
         if (title && description) {
             res.status(200).json(
                 {
-                    "title": title,
-                    "description": description
+                    "contactForm": {
+                        "title": title,
+                        "description": description
+                    }
                 }
             );
         }
