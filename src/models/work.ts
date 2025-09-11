@@ -4,6 +4,7 @@ import { UUID } from "node:crypto";
 
 export interface WorkData {
     id?: UUID,
+    order: number,
     iconPath: string,
     title: string,
     subtitle: string,
@@ -14,6 +15,7 @@ export interface WorkData {
 
 export class Work extends Model<WorkData> implements WorkData {
     public id?: UUID;
+    public order!: number;
     public iconPath!: string;
     public title!: string;
     public subtitle!: string;
@@ -31,6 +33,10 @@ Work.init(
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: sequelize.literal("gen_random_uuid()")
+        },
+        order: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
         },
         iconPath: {
             type: DataTypes.STRING,
