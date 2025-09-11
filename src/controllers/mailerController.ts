@@ -32,7 +32,7 @@ export async function sendContactResponseEmail(req: Request<{}, {}, ContactSchem
             }
         );
     }
-    catch (err) {
+    catch (err: unknown) {
         console.log(`Error occurred when sending email: ${err}`);
         res.status(500).json(
             {
