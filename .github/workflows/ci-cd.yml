@@ -37,6 +37,10 @@ jobs:
           DB_DATABASE=${{ secrets.PROD_DB_DATABASE }}
           DB_USER=${{ secrets.PROD_DB_USER }}
           DB_PASSWORD=${{ secrets.PROD_DB_PASSWORD }}
+          REDIS_HOST=${{ secrets.PROD_REDIS_HOST }}
+          REDIS_PORT=${{ secrets.PROD_REDIS_PORT }}
+          REDIS_USERNAME=${{ secrets.PROD_REDIS_USERNAME }}
+          REDIS_PASSWORD=${{ secrets.PROD_REDIS_PASSWORD }}
           EOF
 
       - name: Build backend
