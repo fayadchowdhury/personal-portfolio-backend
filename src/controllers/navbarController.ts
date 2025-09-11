@@ -8,8 +8,10 @@ export async function getNavbarData(req: Request, res: Response) {
         if (leader && links) {
             res.status(200).json(
                 {
-                    "leader": leader,
-                    "links": links
+                    "navbar" : {
+                        "leader": leader,
+                        "links": links
+                    }
                 }
             );
         }
