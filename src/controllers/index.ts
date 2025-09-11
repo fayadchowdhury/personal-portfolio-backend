@@ -7,3 +7,6 @@ export * from "./navbarController";
 export * from "./introController";
 export * from "./socialsController";
 export * from "./nameController";
+export * from "./workController";
+export * from "./skillController";
+export * from "./testimonialController";

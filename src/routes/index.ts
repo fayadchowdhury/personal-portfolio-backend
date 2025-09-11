@@ -8,6 +8,9 @@ import navbarRouter from "./navbar";
 import introRouter from "./intro";
 import socialsRouter from "./socials";
 import nameRouter from "./name";
+import workRouter from "./work";
+import skillRouter from "./skill";
+import testimonialRouter from "./testimonial";
 
 const router: Router = Router();
 
@@ -20,5 +23,8 @@ router.use("/navbar", navbarRouter);
 router.use("/intro", introRouter);
 router.use("/socials", socialsRouter);
 router.use("/name", nameRouter);
+router.use("/works", workRouter);
+router.use("/skills", skillRouter);
+router.use("/testimonials", testimonialRouter);
 
 export default router;
