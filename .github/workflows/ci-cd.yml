@@ -119,3 +119,4 @@ jobs:
             cd ${{ secrets.PROD_APP_DIR }}
             npm ci --omit=dev
             pm2 restart portfolio-backend || pm2 start ${{ secrets.PROD_APP_DIR }}/dist/app.js --name portfolio-backend
+            pm2 save
